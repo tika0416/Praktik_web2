@@ -25,7 +25,9 @@ class Mahasiswa {
     public $nim;
     public $jurusan;
 ```
+(membuat class mahasiswa dengan 3 atribut yaitu : nama,nim,dan jurusan)
 - manambahkan construct
+- construct adalah metode khusus dalam sebuah kelas yang dikenal sebagai konstruktor. Konstruktor ini secara otomatis dipanggil ketika sebuah objek dari kelas tersebut dibuat. Tujuan utama dari konstruktor adalah untuk menginisialisasi objek dengan nilai awal atau melakukan setup yang diperlukan sebelum objek digunakan.
 ```php
 //Contructor
 public function __construct($nama, $nim, $jurusan){
@@ -34,7 +36,9 @@ public function __construct($nama, $nim, $jurusan){
         $this->jurusan = $jurusan;
     }
 ```
+(contruct yang berguna untuk menyeting objek dengan nilai awal yang di perlukan)<br>
 - Membuat metode tampilkanData() dalam class Mahasiswa.
+  dengan memasukan objek yang di perlukan
 ```php
 //Metode atau fuction
     public function tampilkanData() {
@@ -42,11 +46,13 @@ public function __construct($nama, $nim, $jurusan){
     }
 ```
 - Instansiasi objek dari class Mahasiswa dan tampilkan data mahasiswa tersebut.
+(untuk menampilkan isi dari atribut yang kita buat tadi yaitu isi dari nama,nim, dan jurusan)
 ```php
 //Instansiasi Objek
 $mhs = new Mahasiswa("Tika Kuswardani", "230102046", "Komputer dan Bisnis");
-echo $mhs->tampilkanData();
+echo $mhs->tampilkanData(); 
 ```
+(echo untuk menampilkan data dari metode yang kita buat tadi)
 - Output
 
 <img width="440" alt="1" src="https://github.com/user-attachments/assets/6a50f3d3-9ae4-439b-b9a1-3b92860c25b2">
@@ -62,7 +68,10 @@ class Mahasiswa{
     private $nim;
     private $jurusan;
 ```
+(membuat class mahasiswa dengan atribut nama,nim dan jurusan)
 - Buat metode getter dan setter untuk atribut nama, nim, dan jurusan.
+- Getter adalah metode yang memungkinkan kamu untuk membaca atau mendapatkan nilai dari properti privat atau terproteksi sebuah kelas.
+- setter adalah metode yang memungkinkan kamu untuk menetapkan atau mengubah nilai properti tersebut dengan aturan tertentu.
 ```php
 public function getNama() {
         return $this->nama;
@@ -88,6 +97,7 @@ public function getNama() {
         $this->jurusan = $jurusan;
     }
 ```
+(membuat metode getter dan setter untuk menjabarkan semua atribut yang di perlukan)
 - Demonstrasikan akses ke atribut menggunakan metode getter dan setter.
 ```php
 //Instansiasi Objek
@@ -98,7 +108,7 @@ echo $Mhs->getNim(); //Output Pemrograman
 echo "<br>";
 echo $Mhs->getJurusan(); //Output Pemrograman 
 ```
-
+  
 - Output
 
 <img width="358" alt="2" src="https://github.com/user-attachments/assets/c4f81954-5bef-42f7-99e9-c8ae5da93e99">
