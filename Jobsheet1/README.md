@@ -7,11 +7,6 @@ class Mahasiswa
 ~~~
 ### OBJEK
 Property (atau disebut juga dengan atribut) adalah data yang terdapat dalam sebuah class. Melanjutkan analogi tentang laptop, property dari laptop bisa berupa merk, warna, jenis processor, ukuran layar, dan lain-lain.
-~~~php
-public $nama;
-private $nim;
-protected $nim;
-~~~
 
 ```php
 public $nama;
