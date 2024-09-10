@@ -7,7 +7,9 @@ class Mahasiswa
 ~~~
 ### OBJEK
 Property (atau disebut juga dengan atribut) adalah data yang terdapat dalam sebuah class. Melanjutkan analogi tentang laptop, property dari laptop bisa berupa merk, warna, jenis processor, ukuran layar, dan lain-lain.
-
+- Public :yang di maksud dengan public, maka seluruh kode program di luar class bisa mengaksesnya, termasuk class turunan
+- Protected : dinyatakan sebagai protected, berarti property atau method tersebut tidak bisa diakses dari luar class, namun bisa diakses oleh class itu sendiri atau turunan class tersebut.
+- Private : Jika sebuah property atau method di-set sebagai private, maka satu-satunya yang bisa mengakses adalah class itu sendiri.
 ```php
 public $nama;
 private $nim;
@@ -15,7 +17,7 @@ protected $nim;
 ```
 
 ### 1. Class dan Object
-Membuat class Mahasiswa dan atribut nama,nim,dan jurusan
+- Membuat class Mahasiswa dan atribut nama,nim,dan jurusan
 ```php
 class Mahasiswa {
     //Atribut atau Properties 
@@ -23,7 +25,7 @@ class Mahasiswa {
     public $nim;
     public $jurusan;
 ```
-manambahkan construct
+- manambahkan construct
 ```php
 //Contructor
 public function __construct($nama, $nim, $jurusan){
@@ -32,25 +34,27 @@ public function __construct($nama, $nim, $jurusan){
         $this->jurusan = $jurusan;
     }
 ```
-Membuat metode tampilkanData() dalam class Mahasiswa.
+- Membuat metode tampilkanData() dalam class Mahasiswa.
 ```php
 //Metode atau fuction
     public function tampilkanData() {
         return "Nama: $this->nama <br> NIM: $this->nim <br> Jurusan: $this->jurusan <br>";
     }
 ```
-Instansiasi objek dari class Mahasiswa dan tampilkan data mahasiswa tersebut.
+- Instansiasi objek dari class Mahasiswa dan tampilkan data mahasiswa tersebut.
 ```php
 //Instansiasi Objek
 $mhs = new Mahasiswa("Tika Kuswardani", "230102046", "Komputer dan Bisnis");
 echo $mhs->tampilkanData();
 ```
-Output
+- Output
 
 <img width="440" alt="1" src="https://github.com/user-attachments/assets/6a50f3d3-9ae4-439b-b9a1-3b92860c25b2">
 
 ### 2. Encapsulation
-Ubah atribut dalam class Mahasiswa menjadi private.
+Enkapsulasi adalah metode dengan memanfaatkan penggunaan pada akses kontrol, seperti public, private dan protected. Pemakaian akses kontrol seperti ini biasanya dipakai sesuai dengan kebutuhan suatu data bisa diakses oleh kelas-kelas yang lain.
+
+- Ubah atribut dalam class Mahasiswa menjadi private.
 ```php
 class Mahasiswa{
     //Atribut atau Properties 
@@ -58,9 +62,9 @@ class Mahasiswa{
     private $nim;
     private $jurusan;
 ```
-Buat metode getter dan setter untuk atribut nama, nim, dan jurusan.
+- Buat metode getter dan setter untuk atribut nama, nim, dan jurusan.
 ```php
-ublic function getNama() {
+public function getNama() {
         return $this->nama;
     }
     //metode atau function setter
@@ -84,7 +88,7 @@ ublic function getNama() {
         $this->jurusan = $jurusan;
     }
 ```
-Demonstrasikan akses ke atribut menggunakan metode getter dan setter.
+- Demonstrasikan akses ke atribut menggunakan metode getter dan setter.
 ```php
 //Instansiasi Objek
 $Mhs = new Mahasiswa("Nama: Tika Kuswardani", "Nim: 230102046", "Jurusan: Komputer dan Bisnis");
@@ -95,12 +99,14 @@ echo "<br>";
 echo $Mhs->getJurusan(); //Output Pemrograman 
 ```
 
-Output
+- Output
 
 <img width="358" alt="2" src="https://github.com/user-attachments/assets/c4f81954-5bef-42f7-99e9-c8ae5da93e99">
 
 ### 3. Inheritance
-Buat class Pengguna dengan atribut nama dan metode getNama().
+Inheritance, atau dalam bahasa Indonesia disebut warisan, adalah konsep penting dalam pemrograman berorientasi objek yang termasuk dalam PHP. Melalui inheritance, kita dapat membuat suatu kelas yang mengambil sifat dan perilaku dari kelas lain. Ini mempermudah penyusunan kode yang berstruktur dan menghindari duplikasi.
+
+- Buat class Pengguna dengan atribut nama dan metode getNama().
 ```php
 //Definisi Class
 class Pengguna{
@@ -115,7 +121,7 @@ class Pengguna{
         return $this->nama;
     }
 ```
-Buat class Dosen yang mewarisi class Pengguna dan tambahkan atribut
+- Buat class Dosen yang mewarisi class Pengguna dan tambahkan atribut
 mataKuliah.
 ```php
 class Dosen extends Pengguna {
@@ -132,7 +138,7 @@ class Dosen extends Pengguna {
         return $this->mataKuliah;
     }
 ```
-Instansiasi objek dari class Dosen dan tampilkan data dosen.
+- Instansiasi objek dari class Dosen dan tampilkan data dosen.
 ```php
 //Instansiasi objek dari class Dosen dan tampilkan data dosen.
 $dosen = new Dosen("Nama: Andi Setiawan", "Mata Kuliah: Bahasa inggris");
@@ -142,12 +148,14 @@ echo $dosen->getMatakuliah(); //Output Pemrograman
 ?>
 ```
 
-Output
+- Output
 
 <img width="394" alt="3" src="https://github.com/user-attachments/assets/265ea20c-5ef4-420f-b00c-30b99a7833ff">
 
 ### 4. Polymorphism
-Buat class Pengguna dengan metode aksesFitur().
+Polymorphism adalah gambaran pola dalam object-oriented programming di mana banyak class memiliki fungsi yang berbeda ketika menggunakan interface dan atau abstract class yang sama.
+
+- Buat class Pengguna dengan metode aksesFitur().
 ```php
 // Class Pengguna dengan metode aksesFitur
 class Pengguna {
@@ -163,10 +171,10 @@ class Pengguna {
         return "Akses fitur dasar pengguna.";
     }
 ```
-Implementasikan aksesFitur() dengan cara berbeda di class Dosen dan
+- Implementasikan aksesFitur() dengan cara berbeda di class Dosen dan
 Mahasiswa.
 
-Dosen
+- Dosen
 ```php
 class Dosen extends Pengguna {
     private $mataKuliah;
@@ -185,7 +193,7 @@ class Dosen extends Pengguna {
     }
 }
 ```
-Mahasiswa
+- Mahasiswa
 ```php
 // Class Mahasiswa yang mengoverride metode aksesFitur
 class Mahasiswa extends Pengguna {
@@ -208,7 +216,7 @@ class Mahasiswa extends Pengguna {
     }
 }
 ```
-Instansiasi objek dari class Dosen dan Mahasiswa, lalu panggil metode
+- Instansiasi objek dari class Dosen dan Mahasiswa, lalu panggil metode
 aksesFitur().
 ```php
 // Instansiasi objek dari class Dosen dan Mahasiswa
@@ -222,12 +230,16 @@ echo $mahasiswa->aksesFitur();  // Output: Mahasiswa dapat mengakses fitur pengi
 ?>
 ```
 
-Output
+- Output
 
 <img width="387" alt="4" src="https://github.com/user-attachments/assets/3c96894f-3c06-413d-8a15-c337b0c7518e">
 
 ### 5. Abstraction
-Buat class abstrak Pengguna dengan metode abstrak aksesFitur().
+Abstract Class adalah sebuah class yang tidak bisa di-instansiasi (tidak bisa dibuat menjadi objek) dan berperan sebagai 'kerangka dasar' bagi class turunannya. Di dalam abstract class umumnya akan memiliki abstract method.
+
+Abstract Method
+  adalah sebuah 'method dasar' yang harus diimplementasikan ulang di dalam class anak (child class). Abstract method ditulis tanpa isi dari method, melainkan hanya 'signature'-nya saja. Signature dari sebuah method adalah bagian method yang terdiri dari nama method dan parameternya (jika ada).
+- Buat class abstrak Pengguna dengan metode abstrak aksesFitur().
 ```php
 // Abstract class Pengguna
 abstract class Pengguna {
@@ -242,10 +254,10 @@ abstract class Pengguna {
     abstract public function aksesFitur();
 }
 ```
-Implementasikan class Mahasiswa dan Dosen yang mengimplementasikan
+- Implementasikan class Mahasiswa dan Dosen yang mengimplementasikan
 metode abstrak tersebut.
 
-Mahasiswa
+- Mahasiswa
 ```php
 class Dosen extends Pengguna { 
     //menambahkan atribut 
@@ -266,7 +278,7 @@ class Dosen extends Pengguna {
     }
 }
 ```
-Dosen
+- Dosen
 ```php
 // Class Mahasiswa yang mengimplementasikan metode aksesFitur
 class Mahasiswa extends Pengguna {
@@ -288,7 +300,7 @@ class Mahasiswa extends Pengguna {
     }
 }
 ```
-Demonstrasikan dengan memanggil metode aksesFitur() dari objek yang
+- Demonstrasikan dengan memanggil metode aksesFitur() dari objek yang
 diinstansiasi.
 ```php
 $dosen = new Dosen("Andi Setiawan", "Bahasa Inggris");
@@ -301,7 +313,7 @@ echo $mahasiswa->aksesFitur();  // Output: Mahasiswa dapat mengakses fitur pengi
 ?>
 ```
 
-Output
+- Output
 
 <img width="542" alt="5" src="https://github.com/user-attachments/assets/51dab291-939e-41ec-8640-8676e754737a">
 
