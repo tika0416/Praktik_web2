@@ -94,6 +94,11 @@ echo $Mhs->getNim(); //Output Pemrograman
 echo "<br>";
 echo $Mhs->getJurusan(); //Output Pemrograman 
 ```
+
+Output
+
+<img width="358" alt="2" src="https://github.com/user-attachments/assets/c4f81954-5bef-42f7-99e9-c8ae5da93e99">
+
 ### 3. Inheritance
 Buat class Pengguna dengan atribut nama dan metode getNama().
 ```php
@@ -136,6 +141,11 @@ echo "<br>";
 echo $dosen->getMatakuliah(); //Output Pemrograman 
 ?>
 ```
+
+Output
+
+<img width="394" alt="3" src="https://github.com/user-attachments/assets/265ea20c-5ef4-420f-b00c-30b99a7833ff">
+
 ### 4. Polymorphism
 Buat class Pengguna dengan metode aksesFitur().
 ```php
@@ -211,6 +221,11 @@ echo "<br>";
 echo $mahasiswa->aksesFitur();  // Output: Mahasiswa dapat mengakses fitur pengisian KRS dan melihat nilai di jurusan Jurusan: Komputer dan Bisnis.
 ?>
 ```
+
+Output
+
+<img width="387" alt="4" src="https://github.com/user-attachments/assets/3c96894f-3c06-413d-8a15-c337b0c7518e">
+
 ### 5. Abstraction
 Buat class abstrak Pengguna dengan metode abstrak aksesFitur().
 ```php
@@ -285,3 +300,8 @@ echo "<br>";
 echo $mahasiswa->aksesFitur();  // Output: Mahasiswa dapat mengakses fitur pengisian KRS dan melihat nilai di jurusan Komputer dan Bisnis.
 ?>
 ```
+
+Output
+
+<img width="542" alt="5" src="https://github.com/user-attachments/assets/51dab291-939e-41ec-8640-8676e754737a">
+
