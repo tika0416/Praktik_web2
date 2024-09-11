@@ -3,14 +3,14 @@
 class Person {
     protected $name; // Atribut nama (protected)
 
-    // Constructor untuk inisialisasi nama
-    public function __construct($name) {
-        $this->name = $name;
-    }
-
     // Method untuk mendapatkan nama
     public function getName() {
         return $this->name;
+    }
+
+    // Setter untuk nama
+    public function setName($name) {
+        $this->name = $name;
     }
 }
 
@@ -18,14 +18,13 @@ class Person {
 class Teacher extends Person {
     public $teacherID; // Atribut teacherID (public)
 
-    // Constructor untuk inisialisasi nama dan teacherID
-    public function __construct($name, $teacherID) {
-        parent::__construct($name); // Memanggil constructor dari Person
+    // Setter untuk teacherID
+    public function setTeacherID($teacherID) {
         $this->teacherID = $teacherID;
     }
 
     // Override method untuk menampilkan nama dengan label "Teacher"
-    public function getName1() {
+    public function getName() {
         return "Teacher: " . $this->name;
     }
 }
@@ -34,9 +33,8 @@ class Teacher extends Person {
 class Student extends Person {
     public $studentID; // Atribut studentID (public)
 
-    // Constructor untuk inisialisasi nama dan studentID
-    public function __construct($name, $studentID) {
-        parent::__construct($name); // Memanggil constructor dari Person
+    // Setter untuk studentID
+    public function setStudentID($studentID) {
         $this->studentID = $studentID;
     }
 
@@ -47,10 +45,15 @@ class Student extends Person {
 }
 
 // Membuat objek Student dan Teacher
-$siswa = new Student("Siska Lestari", 1);
-$teacher = new Teacher("Agus Purnomo", 2);
+$siswa = new Student();
+$siswa->setName("Siska Lestari");
+$siswa->setStudentID(1);
+
+$teacher = new Teacher();
+$teacher->setName("Agus Purnomo");
+$teacher->setTeacherID(2);
 
 // Menampilkan nama Student dan Teacher dengan metode masing-masing
 echo $siswa->getName() . "<br>";
-echo $teacher->getName1();
+echo $teacher->getName();
 ?>
