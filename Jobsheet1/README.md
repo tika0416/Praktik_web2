@@ -38,9 +38,13 @@ class Mahasiswa {
 - Instansiasi objek dari class Mahasiswa dan tampilkan data mahasiswa tersebut.
 (untuk menampilkan isi dari atribut yang kita buat tadi yaitu isi dari nama,nim, dan jurusan)
 ```php
-//Instansiasi Objek
-$mhs = new Mahasiswa("Tika Kuswardani", "230102046", "Komputer dan Bisnis");
-echo $mhs->tampilkanData(); 
+/ Instansiasi Objek
+$mhs = new Mahasiswa();
+$mhs->nama = "Tika Kuswardani";
+$mhs->nim = "230102046";
+$mhs->jurusan = "Komputer dan Bisnis";
+
+echo $mhs->tampilkanData();
 ```
 (echo untuk menampilkan data dari metode yang kita buat tadi)
 - Output
@@ -90,13 +94,17 @@ public function getNama() {
 (membuat metode getter dan setter untuk menjabarkan semua atribut yang di perlukan)
 - Demonstrasikan akses ke atribut menggunakan metode getter dan setter.
 ```php
-//Instansiasi Objek
-$Mhs = new Mahasiswa("Nama: Tika Kuswardani", "Nim: 230102046", "Jurusan: Komputer dan Bisnis");
-echo $Mhs->getNama(); //Output Pemrograman 
+// Instansiasi Objek
+$Mhs = new Mahasiswa();
+$Mhs->setNama("Nama: Tika Kuswardani");
+$Mhs->setNim("Nim: 230102046");
+$Mhs->setJurusan("Jurusan: Komputer dan Bisnis");
+
+echo $Mhs->getNama(); // Output Pemrograman 
 echo "<br>";
-echo $Mhs->getNim(); //Output Pemrograman 
+echo $Mhs->getNim(); // Output Pemrograman 
 echo "<br>";
-echo $Mhs->getJurusan(); //Output Pemrograman 
+echo $Mhs->getJurusan(); // Output Pemrograman 
 ```
   
 - Output
@@ -108,44 +116,51 @@ Inheritance, atau dalam bahasa Indonesia disebut warisan, adalah konsep penting 
 
 - Buat class Pengguna dengan atribut nama dan metode getNama().
 ```php
-//Definisi Class
-class Pengguna{
-    //Atribut atau Properties 
+// Definisi Class
+class Pengguna {
+    // Atribut atau Properties 
     protected $nama;
-    //Contructor
-    public function __construct($nama) {
-        $this->nama = $nama;
-    }
-    //metode atau function getter
+
+    // metode atau function getter
     public function getNama() {
         return $this->nama;
     }
+
+    // metode atau function setter
+    public function setNama($nama) {
+        $this->nama = $nama;
+    }
+}
 ```
 - Buat class Dosen yang mewarisi class Pengguna dan tambahkan atribut
 mataKuliah.
 ```php
+// Class Dosen yang mengimplementasikan metode getNama
 class Dosen extends Pengguna {
-    //menambahkan atribut mataKuliah
+    // menambahkan atribut mataKuliah
     private $mataKuliah;
 
-    //Contructor
-    public function __construct($nama, $mataKuliah) {
-        parent::__construct($nama);
-        $this->mataKuliah = $mataKuliah;
-    }
-    //Metode atau fuction
+    // metode atau function getter
     public function getMatakuliah() {
         return $this->mataKuliah;
     }
+
+    // metode atau function setter
+    public function setMatakuliah($mataKuliah) {
+        $this->mataKuliah = $mataKuliah;
+    }
+}
 ```
 - Instansiasi objek dari class Dosen dan tampilkan data dosen.
 ```php
-//Instansiasi objek dari class Dosen dan tampilkan data dosen.
-$dosen = new Dosen("Nama: Andi Setiawan", "Mata Kuliah: Bahasa inggris");
-echo $dosen->getNama(); //Output Pemrograman 
+// Instansiasi objek dari class Dosen dan tampilkan data dosen.
+$dosen = new Dosen();
+$dosen->setNama("Nama: Andi Setiawan");
+$dosen->setMatakuliah("Mata Kuliah: Bahasa Inggris");
+
+echo $dosen->getNama(); // Output Pemrograman 
 echo "<br>";
-echo $dosen->getMatakuliah(); //Output Pemrograman 
-?>
+echo $dosen->getMatakuliah(); // Output Pemrograman 
 ```
 
 - Output
@@ -159,10 +174,11 @@ Polymorphism adalah gambaran pola dalam object-oriented programming di mana bany
 ```php
 // Class Pengguna dengan metode aksesFitur
 class Pengguna {
-    //menambahkan atribut
+    // menambahkan atribut
     protected $nama;
-    //function contructor
-    public function __construct($nama) {
+
+    // metode setter untuk nama
+    public function setNama($nama) {
         $this->nama = $nama;
     }
 
@@ -170,42 +186,39 @@ class Pengguna {
     public function aksesFitur() {
         return "Akses fitur dasar pengguna.";
     }
+}
 ```
 - Implementasikan aksesFitur() dengan cara berbeda di class Dosen dan
 Mahasiswa.
 
 - Dosen
 ```php
+// Class Dosen yang mengoverride metode aksesFitur
 class Dosen extends Pengguna {
     private $mataKuliah;
 
-    //function contructor
-    public function __construct($nama, $mataKuliah) {
-        parent::__construct($nama);
+    // metode setter untuk mata kuliah
+    public function setMatakuliah($mataKuliah) {
         $this->mataKuliah = $mataKuliah;
     }
-
-
 
     // Override metode aksesFitur untuk Dosen
     public function aksesFitur() {
         return "Dosen dapat mengakses fitur pengelolaan nilai dan jadwal mata kuliah <br>  $this->mataKuliah ";
     }
 }
-```
 - Mahasiswa
 ```php
 // Class Mahasiswa yang mengoverride metode aksesFitur
 class Mahasiswa extends Pengguna {
     private $jurusan;
 
-    //Menambahkan function Contructor
-    public function __construct($nama, $jurusan) {
-        parent::__construct($nama);
+    // metode setter untuk jurusan
+    public function setJurusan($jurusan) {
         $this->jurusan = $jurusan;
     }
 
-    //metode atau function getter 
+    // metode getter untuk jurusan
     public function getJurusan() {
         return $this->jurusan;
     }
@@ -220,8 +233,13 @@ class Mahasiswa extends Pengguna {
 aksesFitur().
 ```php
 // Instansiasi objek dari class Dosen dan Mahasiswa
-$dosen = new Dosen("Nama: Andi Setiawan", "Mata Kuliah: Bahasa Inggris");
-$mahasiswa = new Mahasiswa("Nama: Tika Kuswardani", "Jurusan: Komputer dan Bisnis");
+$dosen = new Dosen();
+$dosen->setNama("Nama: Andi Setiawan");
+$dosen->setMatakuliah("Mata Kuliah: Bahasa Inggris");
+
+$mahasiswa = new Mahasiswa();
+$mahasiswa->setNama("Nama: Tika Kuswardani");
+$mahasiswa->setJurusan("Jurusan: Komputer dan Bisnis");
 
 // Panggil metode aksesFitur dari masing-masing objek
 echo $dosen->aksesFitur();      // Output: Dosen dapat mengakses fitur pengelolaan nilai dan jadwal mata kuliah Mata Kuliah: Bahasa Inggris.
@@ -243,10 +261,11 @@ Abstract Method
 ```php
 // Abstract class Pengguna
 abstract class Pengguna {
-    //menambhakan atribut
+    // menambahkan atribut
     protected $nama;
-    //Contructor
-    public function __construct($nama) {
+
+    // metode setter untuk nama
+    public function setNama($nama) {
         $this->nama = $nama;
     }
 
@@ -257,17 +276,19 @@ abstract class Pengguna {
 - Implementasikan class Mahasiswa dan Dosen yang mengimplementasikan
 metode abstrak tersebut.
 
-- Mahasiswa
+- Dosen
 ```php
+// Class Dosen yang mengimplementasikan metode aksesFitur
 class Dosen extends Pengguna { 
-    //menambahkan atribut 
+    // menambahkan atribut 
     private $mataKuliah;
-    //Contructor
-    public function __construct($nama, $mataKuliah) {
-        parent::__construct($nama);
+
+    // metode setter untuk mata kuliah
+    public function setMatakuliah($mataKuliah) {
         $this->mataKuliah = $mataKuliah;
     }
-    //metode atau function getter
+
+    // metode getter untuk mata kuliah
     public function getMatakuliah() {
         return $this->mataKuliah;
     }
@@ -278,18 +299,20 @@ class Dosen extends Pengguna {
     }
 }
 ```
-- Dosen
+- Mahasiswa
 ```php
+
 // Class Mahasiswa yang mengimplementasikan metode aksesFitur
 class Mahasiswa extends Pengguna {
-    //menmabahkan atribut di clas mahasiswa
+    // menambahkan atribut di class mahasiswa
     private $jurusan;
-    //menambahkan function construct
-    public function __construct($nama, $jurusan) {
-        parent::__construct($nama);
+
+    // metode setter untuk jurusan
+    public function setJurusan($jurusan) {
         $this->jurusan = $jurusan;
     }
-    //metode atau function getter
+
+    // metode getter untuk jurusan
     public function getJurusan() {
         return $this->jurusan;
     }
@@ -303,8 +326,14 @@ class Mahasiswa extends Pengguna {
 - Demonstrasikan dengan memanggil metode aksesFitur() dari objek yang
 diinstansiasi.
 ```php
-$dosen = new Dosen("Andi Setiawan", "Bahasa Inggris");
-$mahasiswa = new Mahasiswa("Tika Kuswardani", "Komputer dan Bisnis");
+// Instansiasi objek dari class Dosen dan Mahasiswa
+$dosen = new Dosen();
+$dosen->setNama("Andi Setiawan");
+$dosen->setMatakuliah("Bahasa Inggris");
+
+$mahasiswa = new Mahasiswa();
+$mahasiswa->setNama("Tika Kuswardani");
+$mahasiswa->setJurusan("Komputer dan Bisnis");
 
 // Panggil metode aksesFitur dari masing-masing objek
 echo $dosen->aksesFitur();      // Output: Dosen dapat mengakses fitur pengelolaan nilai dan jadwal mata kuliah Bahasa Inggris.
