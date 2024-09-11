@@ -108,7 +108,7 @@ echo $Mhs->tampilkanData();
 ```
 
 ## Tugas
-- Membuat Kelas Dosen
+- Membuat Kelas Dosen dan menambahkan atribut nama,nim dan jurusan,
 ```php
 class Dosen {
     //membuat object
@@ -130,7 +130,7 @@ public function tampilkanDosen(){
         return "Nama: $this->nama <br> NIP: $this->nip <br> Mata Kuliah: $this->mataKuliah ";
     }
 ```
-- menampilkan objek dosen dan instansiasi
+- menampilkan objek dosen dan instansiasi dengan memasukan data yang akan di tampilkan
 ```php
 //Instansiasi Objek
 $dosen1 = new Dosen("Darwin Hendrik", "199805047658934", "Aplikasi dan Komputer");
