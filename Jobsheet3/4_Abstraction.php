@@ -3,21 +3,21 @@
 abstract class Course {
     protected $courseName;
 
-    // Constructor untuk inisialisasi nama course
-    public function __construct($courseName) {
-        $this->courseName = $courseName;
-    }
-
     // Method abstract yang harus diimplementasikan oleh subclass
     abstract public function getCourseDetails();
+
+    // Setter untuk courseName
+    public function setCourseName($courseName) {
+        $this->courseName = $courseName;
+    }
 }
+
 // Kelas OnlineCourse yang mewarisi Course
 class OnlineCourse extends Course {
     private $platform; // Platform untuk kursus online
 
-    // Constructor untuk inisialisasi courseName dan platform
-    public function __construct($courseName, $platform) {
-        parent::__construct($courseName);
+    // Setter untuk platform
+    public function setPlatform($platform) {
         $this->platform = $platform;
     }
 
@@ -26,24 +26,30 @@ class OnlineCourse extends Course {
         return "Course : {$this->courseName}<br> Platform : {$this->platform}<br>";
     }
 }
+
 // Kelas OfflineCourse yang mewarisi Course
 class OfflineCourse extends Course {
-    private $location; // Lokasi untuk kursus offline
+    private $lokasi; // Lokasi untuk kursus offline
 
-    // Constructor untuk inisialisasi courseName dan location
-    public function __construct($courseName, $location) {
-        parent::__construct($courseName);
-        $this->location = $location;
+    // Setter untuk lokasi
+    public function setLokasi($lokasi) {
+        $this->lokasi = $lokasi;
     }
 
     // Implementasi method getCourseDetails
     public function getCourseDetails() {
-        return "Course : {$this->courseName}<br> Location : {$this->location}";
+        return "Course : {$this->courseName}<br> Location : {$this->lokasi}";
     }
 }
+
 // Membuat objek dari OnlineCourse dan OfflineCourse
-$onlineCourse = new OnlineCourse("English", "Zoom");
-$offlineCourse = new OfflineCourse("Programmer", "Classroom");
+$onlineCourse = new OnlineCourse();
+$onlineCourse->setCourseName("English");
+$onlineCourse->setPlatform("Zoom");
+
+$offlineCourse = new OfflineCourse();
+$offlineCourse->setCourseName("Programmer");
+$offlineCourse->setLokasi("Classroom");
 
 // Menampilkan detail kursus
 echo "ONLINE COURSE: <br>";
