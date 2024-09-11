@@ -3,14 +3,14 @@
 class Person {
     protected $name; // Atribut nama (protected)
 
-    // Constructor untuk inisialisasi nama
-    public function __construct($name) {
-        $this->name = $name;
-    }
-
     // Method untuk mendapatkan nama
     public function getName() {
         return $this->name;
+    }
+
+    // Setter untuk nama
+    public function setName($name) {
+        $this->name = $name;
     }
 }
 
@@ -24,8 +24,11 @@ class Student extends Person {
     }
 }
 
-// Membuat objek Student dengan nama "Billy"
-$siswa = new Student("Billy ");
+// Membuat objek Student
+$siswa = new Student();
+
+// Mengatur nama siswa menggunakan setter
+$siswa->setName("Billy");
 
 // Menampilkan nama siswa dan hasil dari getStudentID
 echo $siswa->getName() . " menyapa" . $siswa->getStudentID(); // Menampilkan nama siswa diikuti dengan string dari getStudentID
