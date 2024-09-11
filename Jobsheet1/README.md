@@ -26,17 +26,7 @@ class Mahasiswa {
     public $jurusan;
 ```
 (membuat class mahasiswa dengan 3 atribut yaitu : nama,nim,dan jurusan)
-- manambahkan construct
-- construct adalah metode khusus dalam sebuah kelas yang dikenal sebagai konstruktor. Konstruktor ini secara otomatis dipanggil ketika sebuah objek dari kelas tersebut dibuat. Tujuan utama dari konstruktor adalah untuk menginisialisasi objek dengan nilai awal atau melakukan setup yang diperlukan sebelum objek digunakan.
-```php
-//Contructor
-public function __construct($nama, $nim, $jurusan){
-        $this->nama = $nama;
-        $this->nim = $nim;
-        $this->jurusan = $jurusan;
-    }
-```
-(contruct yang berguna untuk menyeting objek dengan nilai awal yang di perlukan)<br>
+
 - Membuat metode tampilkanData() dalam class Mahasiswa.
   dengan memasukan objek yang di perlukan
 ```php
