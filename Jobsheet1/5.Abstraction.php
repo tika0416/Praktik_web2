@@ -1,15 +1,12 @@
 <?php
 // Abstract class Pengguna
 abstract class Pengguna {
-    //menambhakan atribut
+    // menambahkan atribut
     protected $nama;
-    //Contructor
-    public function __construct($nama) {
+
+    // metode setter untuk nama
+    public function setNama($nama) {
         $this->nama = $nama;
-    }
-    //metode atau function getter
-    public function getNama() {
-        return $this->nama;
     }
 
     // Abstract method yang harus diimplementasikan di class anak
@@ -18,14 +15,15 @@ abstract class Pengguna {
 
 // Class Dosen yang mengimplementasikan metode aksesFitur
 class Dosen extends Pengguna { 
-    //menambahkan atribut 
+    // menambahkan atribut 
     private $mataKuliah;
-    //Contructor
-    public function __construct($nama, $mataKuliah) {
-        parent::__construct($nama);
+
+    // metode setter untuk mata kuliah
+    public function setMatakuliah($mataKuliah) {
         $this->mataKuliah = $mataKuliah;
     }
-    //metode atau function getter
+
+    // metode getter untuk mata kuliah
     public function getMatakuliah() {
         return $this->mataKuliah;
     }
@@ -38,14 +36,15 @@ class Dosen extends Pengguna {
 
 // Class Mahasiswa yang mengimplementasikan metode aksesFitur
 class Mahasiswa extends Pengguna {
-    //menmabahkan atribut di clas mahasiswa
+    // menambahkan atribut di class mahasiswa
     private $jurusan;
-    //menambahkan function construct
-    public function __construct($nama, $jurusan) {
-        parent::__construct($nama);
+
+    // metode setter untuk jurusan
+    public function setJurusan($jurusan) {
         $this->jurusan = $jurusan;
     }
-    //metode atau function getter
+
+    // metode getter untuk jurusan
     public function getJurusan() {
         return $this->jurusan;
     }
@@ -57,8 +56,13 @@ class Mahasiswa extends Pengguna {
 }
 
 // Instansiasi objek dari class Dosen dan Mahasiswa
-$dosen = new Dosen("Andi Setiawan", "Bahasa Inggris");
-$mahasiswa = new Mahasiswa("Tika Kuswardani", "Komputer dan Bisnis");
+$dosen = new Dosen();
+$dosen->setNama("Andi Setiawan");
+$dosen->setMatakuliah("Bahasa Inggris");
+
+$mahasiswa = new Mahasiswa();
+$mahasiswa->setNama("Tika Kuswardani");
+$mahasiswa->setJurusan("Komputer dan Bisnis");
 
 // Panggil metode aksesFitur dari masing-masing objek
 echo $dosen->aksesFitur();      // Output: Dosen dapat mengakses fitur pengelolaan nilai dan jadwal mata kuliah Bahasa Inggris.
