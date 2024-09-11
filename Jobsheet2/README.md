@@ -59,17 +59,30 @@ $Mhs = new Mahasiswa("Lisa Marlia Puspita", "230102057", "Elektronika dan Mekaro
 echo $Mhs->tampilkanData();
 ```
 ### 3. Membuat Metode tambahan yaitu update jurusan
+- Membuat class mahasiswa
+```php
+class Mahasiswa {
+    private $nama;
+    private $nim;
+    private $jurusan;
+```
 - Buat metode updateJurusan() dalam kelas Mahasiswa yang memungkinkan
-perubahan jurusan.
+perubahan jurusan. (Gunakan metode ini untuk mengubah jurusan dari objek yang sudah dibuat)
 ```php
 public function updateJurusan($jurusanBaru){
         $this->jurusan = $jurusanBaru;
     }
 ```
-- Gunakan metode ini untuk mengubah jurusan dari objek yang sudah dibuat.
+- 
 ```php
-//Instansiasi Objek
-$Mhs = new Mahasiswa("Lisa Marlia Puspita", "230102057", "Elektronika dan Mekaronika");
+// Instansiasi Objek
+$Mhs = new Mahasiswa();
+
+// Setel nilai-nilai properti secara terpisah
+$Mhs->setNama("Lisa Marlia Puspita");
+$Mhs->setNim("230102057");
+$Mhs->setJurusan("Elektronika dan Mekatronika");
+
 // Menampilkan data awal
 echo "DATA AWAL:";
 echo $Mhs->tampilkanData();
@@ -93,8 +106,14 @@ echo $Mhs->tampilkanData();
 - Tampilkan data mahasiswa yang sudah diperbarui dengan memanggil metode
 tampilkanData().
 ```php
-//Instansiasi Objek
-$Mhs = new Mahasiswa("Lisa Marlia Puspita", "230102057", "Elektronika dan Mekaronika");
+// Instansiasi Objek
+$Mhs = new Mahasiswa();
+
+// Mengatur nilai-nilai atribut menggunakan setter
+$Mhs->setNama("Lisa Marlia Puspita");
+$Mhs->setNim("230102057");
+$Mhs->setJurusan("Elektronika dan Mekatronika");
+
 // Menampilkan data awal
 echo "DATA AWAL:";
 echo $Mhs->tampilkanData();
@@ -103,7 +122,7 @@ echo "<br><br>";
 // Mengubah nilai atribut nim menggunakan setter
 $Mhs->setNim("2323232323");
 
-// Menampilkan data setelah perubahan jurusan
+// Menampilkan data setelah perubahan
 echo "DATA SETELAH DI UBAH:";
 echo $Mhs->tampilkanData();
 ```
