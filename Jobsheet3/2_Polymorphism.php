@@ -1,5 +1,5 @@
 <?php
-// Kelas Person sebagai induk
+// Kelas Person
 class Person {
     protected $name; // Atribut nama (protected)
 
@@ -8,52 +8,48 @@ class Person {
         return $this->name;
     }
 
-    // Setter untuk nama
+    // Method untuk mengubah nama
     public function setName($name) {
         $this->name = $name;
     }
 }
 
-// Kelas Teacher yang mewarisi Person
-class Teacher extends Person {
-    public $teacherID; // Atribut teacherID (public)
-
-    // Setter untuk teacherID
-    public function setTeacherID($teacherID) {
-        $this->teacherID = $teacherID;
-    }
-
-    // Override method untuk menampilkan nama dengan label "Teacher"
-    public function getName() {
-        return "Teacher: " . $this->name;
-    }
-}
-
 // Kelas Student yang mewarisi Person
 class Student extends Person {
-    public $studentID; // Atribut studentID (public)
+    private $studentID; // Atribut studentID (private)
 
-    // Setter untuk studentID
+    // Method untuk mengubah studentID
     public function setStudentID($studentID) {
         $this->studentID = $studentID;
     }
 
-    // Override method untuk menampilkan nama dengan label "Student"
+    // Method untuk mendapatkan studentID
+    public function getStudentID() {
+        return $this->studentID;
+    }
+
+    // Method untuk mendapatkan nama (override dari Person)
     public function getName() {
-        return "Student: " . $this->name;
+        return parent::getName(); // Memanggil method getName dari Person
     }
 }
 
-// Membuat objek Student dan Teacher
-$siswa = new Student();
-$siswa->setName("Siska Lestari");
-$siswa->setStudentID(1);
+// Membuat objek Student
+$student = new Student();
 
-$teacher = new Teacher();
-$teacher->setName("Agus Purnomo");
-$teacher->setTeacherID(2);
+// Mengatur nama dan studentID menggunakan setter
+$student->setName("Billy");
+$student->setStudentID(342567890);
 
-// Menampilkan nama Student dan Teacher dengan metode masing-masing
-echo $siswa->getName() . "<br>";
-echo $teacher->getName();
+echo "Data Sebelum diubah: <br>";
+echo $student->getName() . "<br>"; // Menampilkan nama awal
+echo $student->getStudentID() . "<br><br>"; // Menampilkan studentID awal
+
+// Mengubah nama dan studentID
+$student->setName("Siska Anjasmara");
+$student->setStudentID("5436781200");
+
+echo "Data Setelah diubah: <br>";
+echo $student->getName() . "<br>"; // Menampilkan nama setelah diubah
+echo $student->getStudentID(); // Menampilkan studentID setelah diubah
 ?>
