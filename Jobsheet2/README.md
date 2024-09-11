@@ -47,6 +47,7 @@ public function __construct($nama, $nim, $jurusan){
         $this->jurusan = $jurusan;
 ```
 - Gunakan constructor ini untuk mengatur nilai awal dari atribut saat objek dibuat.
+- construct adalah metode khusus dalam sebuah kelas yang dikenal sebagai konstruktor. Konstruktor ini secara otomatis dipanggil ketika sebuah objek dari kelas tersebut dibuat. Tujuan utama dari konstruktor adalah untuk menginisialisasi objek dengan nilai awal atau melakukan setup yang diperlukan sebelum objek digunakan.
 ```php
 public function tampilkanData(){
        return "<br> Nama: $this->nama <br> NIM: $this->nim <br> Jurusan: $this->jurusan";
