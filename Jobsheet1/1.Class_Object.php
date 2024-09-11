@@ -1,26 +1,22 @@
 <?php
-//Definisi Class
+// Definisi Class
 class Mahasiswa {
-    //Atribut atau Properties 
+    // Atribut atau Properties 
     public $nama;
     public $nim;
     public $jurusan;
 
-    //Contructor
-    public function __construct($nama, $nim, $jurusan){
-        $this->nama = $nama;
-        $this->nim = $nim;
-        $this->jurusan = $jurusan;
-    }
-
-    //Metode atau fuction
+    // Metode atau function untuk menampilkan data
     public function tampilkanData() {
         return "Nama: $this->nama <br> NIM: $this->nim <br> Jurusan: $this->jurusan <br>";
     }
 }
 
-//Instansiasi Objek
-$mhs = new Mahasiswa("Tika Kuswardani", "230102046", "Komputer dan Bisnis");
+// Instansiasi Objek
+$mhs = new Mahasiswa();
+$mhs->nama = "Tika Kuswardani";
+$mhs->nim = "230102046";
+$mhs->jurusan = "Komputer dan Bisnis";
+
 echo $mhs->tampilkanData();
 ?>
-
