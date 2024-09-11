@@ -120,7 +120,7 @@ echo $siswa->getName() . "<br>";
 echo $teacher->getName();
 ?>
 ```
-- OUTPUT
+- OUTPUT<br>
   <img width="391" alt="2 POLYMORPHSIM" src="https://github.com/user-attachments/assets/bcb3b646-73d9-4dad-b012-bce2c9f8db8c">
 
 ### 3. ENCAPSULATION
@@ -198,7 +198,7 @@ echo $student->getName() . "<br>"; // Menampilkan nama setelah diubah
 echo $student->getStudentID(); // Menampilkan studentID setelah diubah
 ?>
 ```
-- OUTPUT
+- OUTPUT<br>
   <img width="443" alt="3  ENCAPSULATION" src="https://github.com/user-attachments/assets/8222979f-cd91-49fb-97f0-a0b469395144">
 
 ### 4. ABSTRACTION
@@ -277,7 +277,7 @@ echo "OFFLINE COURSE: <br>";
 echo $offlineCourse->getCourseDetails();
 ?>
 ```
-- OUTPUT
+- OUTPUT<br>
   <img width="458" alt="4 ABSTRACK" src="https://github.com/user-attachments/assets/5c5ba5a0-c49d-403b-8d91-25a211486e53">
 
 # TUGAS
@@ -414,6 +414,6 @@ echo $jurnalMahasiswa->submitJurnal() . "<br>";
 echo $jurnalDosen->submitJurnal();
 ?>
 ```
-- OUTPUT
+- OUTPUT<br>
   <img width="484" alt="TUGAS" src="https://github.com/user-attachments/assets/0aa2079a-5de8-4ced-8afe-bb36bd0fa952">
 
