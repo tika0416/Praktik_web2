@@ -1,35 +1,42 @@
 <?php 
-//Definisi Class
-class Pengguna{
-    //Atribut atau Properties 
+// Definisi Class
+class Pengguna {
+    // Atribut atau Properties 
     protected $nama;
-    //Contructor
-    public function __construct($nama) {
-        $this->nama = $nama;
-    }
-    //metode atau function getter
+
+    // metode atau function getter
     public function getNama() {
         return $this->nama;
     }
+
+    // metode atau function setter
+    public function setNama($nama) {
+        $this->nama = $nama;
+    }
 }
+
 // Class Dosen yang mengimplementasikan metode getNama
 class Dosen extends Pengguna {
-    //menambahkan atribut mataKuliah
+    // menambahkan atribut mataKuliah
     private $mataKuliah;
 
-    //Contructor
-    public function __construct($nama, $mataKuliah) {
-        parent::__construct($nama);
-        $this->mataKuliah = $mataKuliah;
-    }
-    //Metode atau fuction
+    // metode atau function getter
     public function getMatakuliah() {
         return $this->mataKuliah;
     }
+
+    // metode atau function setter
+    public function setMatakuliah($mataKuliah) {
+        $this->mataKuliah = $mataKuliah;
+    }
 }
-//Instansiasi objek dari class Dosen dan tampilkan data dosen.
-$dosen = new Dosen("Nama: Andi Setiawan", "Mata Kuliah: Bahasa inggris");
-echo $dosen->getNama(); //Output Pemrograman 
+
+// Instansiasi objek dari class Dosen dan tampilkan data dosen.
+$dosen = new Dosen();
+$dosen->setNama("Nama: Andi Setiawan");
+$dosen->setMatakuliah("Mata Kuliah: Bahasa Inggris");
+
+echo $dosen->getNama(); // Output Pemrograman 
 echo "<br>";
-echo $dosen->getMatakuliah(); //Output Pemrograman 
+echo $dosen->getMatakuliah(); // Output Pemrograman 
 ?>
