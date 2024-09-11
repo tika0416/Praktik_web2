@@ -108,4 +108,34 @@ echo $Mhs->tampilkanData();
 ```
 
 ## Tugas
+- Membuat Kelas Dosen
+```php
+class Dosen {
+    //membuat object
+    public $nama;
+    public $nip;
+    public $mataKuliah;
+```
+- Implementasikan kelas Dosen dengan atribut nama, nip, dan mataKuliah.
+```php
+public function __construct($nama, $nip, $mataKuliah){
+        $this->nama = $nama;
+        $this->nip = $nip;
+        $this->mataKuliah = $mataKuliah;
+    }
+```
+- Buat metode tampilkanDosen() untuk menampilkan informasi dosen.
+```php
+public function tampilkanDosen(){
+        return "Nama: $this->nama <br> NIP: $this->nip <br> Mata Kuliah: $this->mataKuliah ";
+    }
+```
+- menampilkan objek dosen dan instansiasi
+```php
+//Instansiasi Objek
+$dosen1 = new Dosen("Darwin Hendrik", "199805047658934", "Aplikasi dan Komputer");
+echo "DATA DOSEN: <br>";
+echo $dosen1->tampilkanDosen();
+```
+
 
