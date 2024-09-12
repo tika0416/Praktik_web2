@@ -5,13 +5,6 @@
 class Person {
     protected $name; // Atribut nama (protected)
 ```
-- Membuat fungsi Contruct name untuk inisialisasi nama
-```php
-// Constructor untuk inisialisasi nama
-    public function __construct($name) {
-        $this->name = $name;
-    }
-```
 - membuat metode getName
 ```php
 // Method untuk mendapatkan nama
@@ -33,12 +26,16 @@ class Student extends Person {
 ```
 - Menampilkan nama siswa dan hasil dari studentID
 ```php
-// Membuat objek Student dengan nama "Billy"
-$siswa = new Student("Billy ");
+// Membuat objek Student
+$siswa = new Student();
+
+// Mengatur nama siswa menggunakan setter
+$siswa->setName("Billy");
 
 // Menampilkan nama siswa dan hasil dari getStudentID
 echo $siswa->getName() . " menyapa" . $siswa->getStudentID(); // Menampilkan nama siswa diikuti dengan string dari getStudentID
 ?>
+
 ```
 
 - OUTPUT<br>
@@ -52,14 +49,14 @@ echo $siswa->getName() . " menyapa" . $siswa->getStudentID(); // Menampilkan nam
 class Person {
     protected $name; // Atribut nama (protected)
 
-    // Constructor untuk inisialisasi nama
-    public function __construct($name) {
-        $this->name = $name;
-    }
-
     // Method untuk mendapatkan nama
     public function getName() {
         return $this->name;
+    }
+
+    // Setter untuk nama
+    public function setName($name) {
+        $this->name = $name;
     }
 }
 ```
@@ -68,14 +65,17 @@ class Person {
 // Kelas Teacher yang mewarisi Person
 class Teacher extends Person {
     public $teacherID; // Atribut teacherID (public)
-```
-- membuat fungsi construct dan atribut yang mewarisi dari kelas person dan memasukan atribut dari kelas person
-```php
-// Constructor untuk inisialisasi nama dan teacherID
-    public function __construct($name, $teacherID) {
-        parent::__construct($name); // Memanggil constructor dari Person
+
+    // Setter untuk teacherID
+    public function setTeacherID($teacherID) {
         $this->teacherID = $teacherID;
     }
+
+    // Override method untuk menampilkan nama dengan label "Teacher"
+    public function getName() {
+        return "Teacher: " . $this->name;
+    }
+}
 ```
 - Menambahkan metode getName1
 ```php
@@ -89,14 +89,17 @@ class Teacher extends Person {
 // Kelas Student yang mewarisi Person
 class Student extends Person {
     public $studentID; // Atribut studentID (public)
-```
-- Membuat construct
-```php
-// Constructor untuk inisialisasi nama dan studentID
-    public function __construct($name, $studentID) {
-        parent::__construct($name); // Memanggil constructor dari Person
+
+    // Setter untuk studentID
+    public function setStudentID($studentID) {
         $this->studentID = $studentID;
     }
+
+    // Override method untuk menampilkan nama dengan label "Student"
+    public function getName() {
+        return "Student: " . $this->name;
+    }
+}
 ```
 - Override metode getName() di kelas Student dan Teacher untuk menampilkan
 format berbeda.
@@ -110,8 +113,13 @@ format berbeda.
 - membuat objek student dan teacher
 ```php
 // Membuat objek Student dan Teacher
-$siswa = new Student("Siska Lestari", 1);
-$teacher = new Teacher("Agus Purnomo", 2);
+$siswa = new Student();
+$siswa->setName("Siska Lestari");
+$siswa->setStudentID(1);
+
+$teacher = new Teacher();
+$teacher->setName("Agus Purnomo");
+$teacher->setTeacherID(2);
 ```
 - Menampilkan nama student dan teacher dengan masing masing metode yang telah di override
 ```php
@@ -130,11 +138,6 @@ echo $teacher->getName();
 class Person {
     protected $name; // Atribut nama (protected)
 
-    // Constructor untuk inisialisasi nama
-    public function __construct($name) {
-        $this->name = $name;
-    }
-
     // Method untuk mendapatkan nama
     public function getName() {
         return $this->name;
@@ -151,14 +154,6 @@ class Person {
 // Kelas Student yang mewarisi Person
 class Student extends Person {
     private $studentID; // Atribut studentID (private)
-```
-- Membuat fungsi construct
-```php
-// Constructor untuk inisialisasi nama dan studentID
-    public function __construct($name, $studentID) {
-        parent::__construct($name); // Memanggil constructor dari Person
-        $this->studentID = $studentID;
-    }
 ```
 - Tambahkan metode setter dan getter untuk mengakses 
 ```php
@@ -181,13 +176,19 @@ class Student extends Person {
 - Membuat objek student
 ```php
 // Membuat objek Student
-$student = new Student("Billy ", 342567890);
+$student = new Student();
+```
+- Mengatur nama dan studenid
+```php
+// Mengatur nama dan studentID menggunakan setter
+$student->setName("Billy");
+$student->setStudentID(342567890);
 
 echo "Data Sebelum diubah: <br>";
 echo $student->getName() . "<br>"; // Menampilkan nama awal
 echo $student->getStudentID() . "<br><br>"; // Menampilkan studentID awal
 ```
-- mengubah nilai atribut name dan studentID.
+- mengubah nilai atribut name dan studentID dan menampilkan isi data
 ```php
 // Mengubah nama dan studentID
 $student->setName("Siska Anjasmara");
@@ -202,16 +203,20 @@ echo $student->getStudentID(); // Menampilkan studentID setelah diubah
   <img width="443" alt="3  ENCAPSULATION" src="https://github.com/user-attachments/assets/8222979f-cd91-49fb-97f0-a0b469395144">
 
 ### 4. ABSTRACTION
-- Buat kelas abstrak Course dan membuat atribut course name, menambahkan construct
+- Buat kelas abstrak Course dan membuat atribut course name
 ```php
 // Kelas abstrak Course
 abstract class Course {
     protected $courseName;
 
-    // Constructor untuk inisialisasi nama course
-    public function __construct($courseName) {
+    // Method abstract yang harus diimplementasikan oleh subclass
+    abstract public function getCourseDetails();
+
+    // Setter untuk courseName
+    public function setCourseName($courseName) {
         $this->courseName = $courseName;
     }
+}
 ```
 - Method abstract yang harus diimplementasikan oleh subclass
 ```php
@@ -224,12 +229,9 @@ abstract class Course {
 // Kelas OnlineCourse yang mewarisi Course
 class OnlineCourse extends Course {
     private $platform; // Platform untuk kursus online
-```
-- Membubat construct
-```php
-// Constructor untuk inisialisasi courseName dan platform
-    public function __construct($courseName, $platform) {
-        parent::__construct($courseName);
+
+    // Setter untuk platform
+    public function setPlatform($platform) {
         $this->platform = $platform;
     }
 ```
@@ -245,12 +247,9 @@ class OnlineCourse extends Course {
 // Kelas OfflineCourse yang mewarisi Course
 class OfflineCourse extends Course {
     private $lokasi; // Lokasi untuk kursus offline
-```
-- Membuat construct
-```php
-// Constructor untuk inisialisasi courseName dan location
-    public function __construct($courseName, $lokasi) {
-        parent::__construct($courseName);
+
+    // Setter untuk lokasi
+    public function setLokasi($lokasi) {
         $this->lokasi = $lokasi;
     }
 ```
@@ -263,9 +262,14 @@ class OfflineCourse extends Course {
 ```
 - Membuat Objek
 ```php
-// Membuat objek dari OnlineCourse dan OfflineCourse
-$onlineCourse = new OnlineCourse("English", "Zoom");
-$offlineCourse = new OfflineCourse("Programmer", "Classroom");
+/// Membuat objek dari OnlineCourse dan OfflineCourse
+$onlineCourse = new OnlineCourse();
+$onlineCourse->setCourseName("English");
+$onlineCourse->setPlatform("Zoom");
+
+$offlineCourse = new OfflineCourse();
+$offlineCourse->setCourseName("Programmer");
+$offlineCourse->setLokasi("Classroom");
 ```
 - Menampilkan data
 ```php
@@ -275,7 +279,6 @@ echo $onlineCourse->getCourseDetails();
 echo "<br>";
 echo "OFFLINE COURSE: <br>";
 echo $offlineCourse->getCourseDetails();
-?>
 ```
 - OUTPUT<br>
   <img width="458" alt="4 ABSTRACK" src="https://github.com/user-attachments/assets/5c5ba5a0-c49d-403b-8d91-25a211486e53">
